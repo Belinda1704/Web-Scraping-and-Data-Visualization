@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smartphone Pricing Trends</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+  <canvas id="priceChart" width="800" height="400"></canvas>
+
+  <script>
+    // Sample dataset
+    const smartphoneData = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      amazonPrices: [500, 490, 480, 485, 475],
+      targetPrices: [510, 495, 485, 490, 480],
+      walmartPrices: [495, 485, 475, 480, 470]
+    };
+
+    // Create a line chart
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    const priceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: smartphoneData.labels,
+        datasets: [
+          {
+            label: 'Amazon',
+            data: smartphoneData.amazonPrices,
+            borderColor: 'red',
+            fill: false
+          },
+          {
+            label: 'Target',
+            data: smartphoneData.targetPrices,
+            borderColor: 'blue',
+            fill: false
+          },
+          {
+            label: 'Walmart',
+            data: smartphoneData.walmartPrices,
+            borderColor: 'green',
+            fill: false
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
